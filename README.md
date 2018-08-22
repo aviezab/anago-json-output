@@ -43,7 +43,7 @@ model.analyze(text)
 # With aviezab's Anago-JSON-Output:
 ```python
 text = 'President Obama is speaking at the White House.'
-print (jsonkansaja (text))
+print (jsonkansaja (model.analyze(text)))
 ```
 
 {"Person": ["Obama"], "PoliticalOrg": [], "Facility": [], "Company": [], "GeopoliticalEnt": [], "Location": ["White House"], "Product": [], "Event": [], "WoArt": [], "Law": [], "Language": [], "Date": [], "Time": [], "Percentage": [], "Money": [], "Quantity": [], "Ordinal": [], "Cardinal": [], "Religion": []}
