@@ -68,11 +68,8 @@ def varkosong():
 	crd=[]
 	reg=[]
 
-# text from anago output
+# example text from anago output
 teks = " \"{'text': 'Budi', 'type': 'PER', 'score': 1.0, 'beginOffset': 0, 'endOffset': 1}, {'text': 'Haris', 'type': 'PER', 'score': 1.0, 'beginOffset': 2, 'endOffset': 3}, {'text': 'Bandung', 'type': 'GPE', 'score': 1.0, 'beginOffset': 5, 'endOffset': 6}, {'text': '1000', 'type': 'DAT', 'score': 1.0, 'beginOffset': 8, 'endOffset': 9}, {'text': 'ringgit', 'type': 'MON', 'score': 1.0, 'beginOffset': 9, 'endOffset': 10}\" "
-#remove any " in anago output
-teks = json.loads(teks)
-teks2 = "{'text': 'Bandung', 'type': 'GPE', 'score': 1.0, 'beginOffset': 5, 'endOffset': 6}, {'text': 'Asian Games', 'type': 'LOC', 'score': 1.0, 'beginOffset': 8, 'endOffset': 10}"
 
 def jsonkansaja(tulisan):
 	global per
@@ -94,7 +91,8 @@ def jsonkansaja(tulisan):
 	global ordi
 	global crd
 	global reg
-
+	#Load json to remove " in anago output
+	tulisan = json.loads( tulisan )
 	# convert text to tuple
 	tp = literal_eval(tulisan)
 	# count items in tuple
@@ -162,13 +160,6 @@ def jsonkansaja(tulisan):
 		if ( tp[x]['type'] == 'REG') :		
 			varx = tp[x]['text']
 			reg.append(varx)
-	'''
-	per = '{"Person": ' + json.dumps(per) + '}'
-	per = json.loads( per )
-	print ( per ) # Jadi Dict
-	per = json.dumps( per )
-	print ( per ) # Jadi Json lagi	
-	'''
 
 	per = '{"Person": ' + json.dumps(per) + '}'
 	nor = '{"PoliticalOrg": ' + json.dumps(nor) + '}'
@@ -232,32 +223,6 @@ def jsonkansaja(tulisan):
 	res.update ( crd )
 	res.update ( reg )
 	
-	#res = '{"Hasil" : ' + per, nor, fac, org, gpe, loc, prd, evt, woa, law, lan, dat, tim, prc, mon, qty, ordi, crd, reg + ' }'
-	#print ( res )
-	#res = json.loads( res )
-	
-	'''
-	print ( per )
-	print ( nor )
-	print ( fac )
-	print ( org )
-	print ( gpe )
-	print ( loc )
-	print ( prd )
-	print ( evt )
-	print ( woa )
-	print ( law )
-	print ( lan )
-	print ( dat )
-	print ( tim )
-	print ( prc )
-	print ( mon )
-	print ( qty )
-	print ( ordi )
-	print ( crd )
-	print ( reg )
-	'''
-
 	# Throw away escape encodings
 	esce = "\\"
 	esce2= chr(0)
@@ -271,7 +236,7 @@ def jsonkansaja(tulisan):
 	res= res.translate(hases2)
 	print ( res )
 	return res
-	#clear memory
+	# Clean memory
 	res=''
 	esce=None
 	esce2=None
