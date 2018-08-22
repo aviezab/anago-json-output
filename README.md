@@ -6,8 +6,8 @@ This code is created for making Hironsan's Anago output to JSON format, so every
 Anago: https://github.com/Hironsan/anago
 
 # The output command in anago:
-> text = 'President Obama is speaking at the White House.'
-> model.analyze(text)
+text = 'President Obama is speaking at the White House.'
+model.analyze(text)
 
 # Output:
 {
@@ -40,7 +40,8 @@ Anago: https://github.com/Hironsan/anago
 }
 
 # With aviezab's Anago-JSON-Output:
-> text = 'President Obama is speaking at the White House.'
-> print (jsonkansaja (text))
+text = 'President Obama is speaking at the White House.'
+print (jsonkansaja (text))
+
 {"Person": ["Obama"], "PoliticalOrg": [], "Facility": [], "Company": [], "GeopoliticalEnt": [], "Location": ["White House"], "Product": [], "Event": [], "WoArt": [], "Law": [], "Language": [], "Date": [], "Time": [], "Percentage": [], "Money": [], "Quantity": [], "Ordinal": [], "Cardinal": [], "Religion": []}
 
