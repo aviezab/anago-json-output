@@ -224,16 +224,9 @@ def jsonkansaja(tulisan):
 	res.update ( reg )
 	
 	# Throw away escape encodings
-	esce = "\\"
-	esce2= chr(0)
-	hases=str.maketrans(esce,esce2)
-	esce = "\'"
-	esce2= chr(34)
-	hases2=str.maketrans(esce,esce2)
-	res= str( res )
+	# using json.dumps
+	res = json.dumps( res )
 
-	res= res.translate(hases)
-	res= res.translate(hases2)
 	print ( res )
 	return res
 	# Clean memory
